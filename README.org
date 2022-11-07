@@ -1,0 +1,59 @@
+
+#+TITLE: The Game Inventor
+#+AUTHOR: Huayu Wang, Jing Sun
+
+/Note: this is my personal note. the final README should be a reorganized version of this./
+
+
+* Prototype
+** Game inventor
+*** Structure
+- theory of games: structure
+- Design the game logic, not the assets
+- cards, maps, indicators, rules
+- information, iterator
+
+*** Parts
+- cards: Cell phone app
+- maps: rear projection
+- indicators:
+** Problem
+- anything graphical is hard to implement
+- too many software
+- no innovation
+
+** Goal
+- a platform that supports rapid development of new games
+- Make the process of creation more enjoyable
+
+* Iteration 1
+** Fresh ideas
+- use probabilistic distributions
+- [[https://www.bbc.com/future/article/20210318-the-ancient-invention-that-ignited-game-play][The ancient invention that ignited game play]]
+- a game that allows overlap from different universes
+- make the rules of individual "planes" verbose in all rule spaces (go pieces have hp, costs are normalized to turns, all rules projected into one big space)
+- a ruleset of creating games
+- Could be: a designing phase where players play a game to create a new game; a playing phase where players play
+- Could be: normalization of different games into one universe, games played upon it
+- ! a clock whose hands could be moved to generate reads
+
+** Design
+*** Story
+- Elements: events(Actions, Catastrophies), game manager(random trigger), status board(Turn indicator, Token indicator)
+- Sample scene: Begin with chess setup. Any player can skip their turn to perform an Action, with the cost of Tokens. The Actions have a 10% chance of failing, causing a Catastrophe. Random Catastrophies may happen at any time during the game, affecting only the player currently in turn. The games ends when one player's king is captured or certain Events happen.
+
+*** Implementation
+- digital counter
+- timer
+- randomizer
+*** Parts
+**** static pieces
+- board, magnetic, piece,
+**** electronics
+- 2 lcd screens, 2 cons
+**** software
+- digital counter (changeable), timer (queries), language output
+- chess clock, but with a twist:
+- spending scores to do things
+- random event
+
