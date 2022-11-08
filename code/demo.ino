@@ -22,90 +22,6 @@ bool toRight = false;
 bool toLeft = false;
 
 //============================================================
-//== Classes ==//
-class Module {
-  // Basic Module class. Has a function OnClick().
-  // TODO: display properties (location, content, textsize, etc)
-  private:
-
-  public:
-  string Name;
-  void OnClick();
-  void Update();
-
-};
-
-
-class Layer {
-  // Basic Layer class. Handles addition of modules, changing the cursor, passing clicking events.
-  // TODO: draw all the modules onto the screen, cursor indicator
-  private:
-
-
-  public:
-  Modules modules;
-
-  void AddModule(Module module) {
-    this->modules.AddModule(module);
-  }
-
-  void Update() {
-    if (toRight | toLeft) {
-      this->modules.Next(toRight);
-    }
-    if (clicked) {
-      this->modules.ClickModule();
-    }
-
-    modules.Update();
-  }
-};
-
-
-
-class Modules {
-  // Helper class for Modules objects.
-  private:
-  public:
-  Module modules[20];
-  int size = 0;
-  int currentModule = 0;
-
-  void AddModule(Module module) {
-    this->modules[size] = module;
-    size++;
-  }
-
-  void ClickModule() {
-    this->modules[currentModule].OnClick();
-  }
-
-  void Next(bool direction) {
-    // direction is + for going right.
-    if (direction) {
-      if (currentModule < size - 1) {
-        currentModule++;
-      } else {
-        currentModule = 0;
-      }
-    } else {
-      if (currentModule > 0 ) {
-        currentModule--;
-      } else {
-        currentModule = size - 1;
-      }
-    }
-  }
-
-  void Update() {
-    for (int i = 0; i++; i<size) {
-      this->modules[i].Update();
-    }
-  }
-};
-
-
-//============================================================
 //== Setup ==//
 void setup() {
 
@@ -128,19 +44,15 @@ void setup() {
 
 oledTest();
 
-Layer defaultLayer;
-Layer currentLayer = &defaultLayer;
-
 //============================================================
 //== Main Loop ==//
 void loop() {
-  //updateDisplay();
+   //updateDisplay();
 
   // parse input data
   updateInputs();
 
   // update the current layer
-  currentLayer.Update();
 
 }
 
