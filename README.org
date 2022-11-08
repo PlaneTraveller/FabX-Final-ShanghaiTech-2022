@@ -43,9 +43,11 @@
 - Sample scene: Begin with chess setup. Any player can skip their turn to perform an Action, with the cost of Tokens. The Actions have a 10% chance of failing, causing a Catastrophe. Random Catastrophies may happen at any time during the game, affecting only the player currently in turn. The games ends when one player's king is captured or certain Events happen.
 
 *** Implementation
-- digital counter
-- timer
-- randomizer
+**** UI sketch
+- Pages -- Modules
+- Pages methods: next(), changePage(), update(), focusLocation
+- Modules methods: onClick(), draw indicator,
+
 *** Parts
 **** static pieces
 - board, magnetic, piece,
