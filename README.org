@@ -1,9 +1,33 @@
+#+title: The Game Inventor!
 
-#+TITLE: The Game Inventor
-#+AUTHOR: Huayu Wang, Jing Sun
+* Introduction
+** What is it? :ATTACH:
+:PROPERTIES:
+:ID:       530484f1-9d97-43a6-a751-d53e965cd031
+:END:
+A modern p latform for players to invent their own games!
 
-/Note: this is my personal note. the final README should be a reorganized version of this./
+[[attachment:_20221115_122811image.jpg]]
 
+** Questions
+*** Q1: What will it do?
+Provide a digital platform for players to invent and enhance their own games. It makes the incorporation of true randomness, time manipulation, and tabbing of large number of variables tivial.
+*** Q2: Who's done beforehand
+DND and other tabletop games are the closest to our idea. Baiscally they provide a set of tools for the players to make up their own story. However, none tried to incorporate digital systems into purely tabletop games.
+*** Q3: What will be designed
+A 16*16 board and a pair of screen/joy-stick combo will be designed. The majority of the work should go into the software. The UI includes several elements: random event generator, skill list, turn indicator. the skills will take effect on the probability of the random event
+*** Q4: Materials?
+2 Oled screens, 2 joy-sticks, 2 arduinos, lazer cut used ply wood, 3d printing used PLA plastic.
+*** Q5: Cost?
+Almost none. the screens and joy-sticks take less than 50RMB
+*** Q6: What parts to manufacture?
+The chess board and the chassis to put everything together. All lazer cuttable and 3d printable.
+*** Q7: Processes
+Lazer cutting and 3d printing, all readily availible.
+*** Q8: Questions answered
+Systems design and software implementation. There's a lot of things we may change about the system: score system is not yet connected to the main system, etc.. There are going to be problems during the software implementation. Because we are using the arduino platform, memory and number of pins are going to be a big problem. Also, the memory restriction basically made it impossible to use Object oriented features of C++, which makes this project extra messy...
+*** Q9: How will it be evaluated?
+If we can actually invent and play an innovative game with it, it is a success.
 
 * Prototype
 ** Game inventor
@@ -43,10 +67,13 @@
 - Sample scene: Begin with chess setup. Any player can skip their turn to perform an Action, with the cost of Tokens. The Actions have a 10% chance of failing, causing a Catastrophe. Random Catastrophies may happen at any time during the game, affecting only the player currently in turn. The games ends when one player's king is captured or certain Events happen.
 
 *** Implementation
-**** UI sketch
-- Pages -- Modules
-- Pages methods: next(), changePage(), update(), focusLocation
-- Modules methods: onClick(), draw indicator,
+**** Demo
+- one device only
+- Basic UI (positioning, movement of cursor)
+- click actions (change turns)
+-
+**** UI Sketch
+
 
 *** Parts
 **** static pieces
@@ -58,4 +85,39 @@
 - chess clock, but with a twist:
 - spending scores to do things
 - random event
+** Game
+- all chess rules apply, unless the screen says otherwise
+- rand. event could happen with probability p each turn on each player's turn, rolled from a shared table of events
+- 4 skills at the cost of a turn apply for each player. all rolled from a common pool of skills
+- plot-twist:
 
+*** Events
+0. Place (5)
+1. Distroy GO accordingly (2)
+2. Capture: Capture using GO (2)
+3. Spawn: spawn a chess piece accordingly (1)
+4. Disassemble: spawn GO accordingly (1)
+
+*** Skills
+0. MvArrGO: Move one of your piece around your GO, p + 5
+1. CaptSpawn: Everytime you capture a piece, spawn a GO for p - 10
+2. SpawnCaptd: Everytime your piece is captured, spawn a GO for p - 10
+3. MvGO: Move one GO one step, p + 10
+4. Rm1, 2: Remove 1 of your GO and 2 for your opponent, for p - 10
+5. RmDiag: Remove a diaganal pair of GO, for p + 20
+6. Turn: Turn a GO of your opponent's into yours for p - 20
+7. Imbue: imbue a piece so that when it moves, p + 5
+8. Yours: Give your opponent a turn, p + 30
+9. Wild: Use Spawn(4) to place an inverted GO, changing its type every turn for p - 30
+10. Anti: Anti-Check: Protect your king with 4 GO, if checked, you ignore the check and the opponent must move out of check next turn for p - 50
+* Outline for presentation
+- Game invention with pen and paper when young, recreate joy of invention with limitless possibilities. Randomness, number updates, time. In addition to the traditional tools, the introduction of these 3 elements will untie our hands. Gather! Before we begin, problem: wrong platform. Arduino: pins, randomness, memory. Using indices! Game blabla… Seriously considering reimplementing with python on Pi.
+
+* Info
+- ddl: meet at 15, presentation
+- presentation contents: pitch
+- prepare a pitch: how it works, why its good, who will it benefit
+- 1min. context, motivation, difference, changes made
+- what if, our story, you can
+- pitch is 1min
+- 3-5 mins
